@@ -114,11 +114,9 @@ spec:
           securityContext: {{- .Values.volumePermissions.securityContext | toYaml | nindent 12 }}
           {{- end }}
           volumeMounts:
-            {{- if .Values.persistence.enabled }}
             - name: data
               mountPath: {{ .Values.persistence.mountPath }}
               subPath: {{ .Values.persistence.subPath }}
-            {{- end }}
             {{- if .Values.shmVolume.enabled }}
             - name: dshm
               mountPath: /dev/shm
